@@ -1,0 +1,9 @@
+eclipse.preferences.version=1
+encoding//src/Administration_des_Fournisseurs/Administrateur.java=UTF-8
+encoding//src/Administration_des_Fournisseurs/Classement.java=UTF-8
+encoding//src/Administration_des_Fournisseurs/Statistiques.java=UTF-8
+encoding//src/DAO/AbstractDAOFactory.java=UTF-8
+encoding//src/DAO/ClassementDAO.java=UTF-8
+encoding//src/DAO/DAO.java=UTF-8
+encoding//src/DAO/DAOFactory.java=UTF-8
+encoding//src/DAO/FournisseurDAO.java=UTF-8
