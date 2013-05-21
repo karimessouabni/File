@@ -28,9 +28,10 @@ public class AdministrateurDAO extends DAO<Administrateur> {
 			if (result.first()) {
 				long id = result.getLong("id");
 				PreparedStatement prepare = this.connect
-						.prepareStatement("INSERT INTO Administrateur (Administrateur_id, Administrateur_mail) VALUES(?, ?)");
+						.prepareStatement("INSERT INTO Administrateur (A_id, A_mail, A_mp) VALUES(?, ?, ?)");
 				prepare.setLong(1, id);
 				prepare.setString(2, obj.getMail());
+				prepare.setString(2, obj.getMp());
 
 				prepare.executeUpdate();
 				obj = this.find(id);

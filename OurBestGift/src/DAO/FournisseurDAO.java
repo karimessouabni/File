@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import Administration_des_Fournisseurs.Fournisseur;
@@ -20,28 +21,32 @@ public class FournisseurDAO extends DAO<Fournisseur> {
 	}
 
 	public Fournisseur create(Fournisseur obj) {
-
+		final String sqlQuery ="INSERT INTO Fournisseur (F_id, F_mail, F_mdp, F_nbventedecide, F_taxe, F_classements ) VALUES(null, ?, ?, ?, ?, ?)";
 		try {
+			
 
-			ResultSet result = this.connect.createStatement(
-					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_UPDATABLE).executeQuery(
-					"SELECT NEXTVAL('Fournisseur_id_seq') as id");
-			if (result.first()) {
-				long id = result.getLong("id");
-				PreparedStatement prepare = this.connect
-						.prepareStatement("INSERT INTO Fournisseur (F_id, F_mail, F_mdp, F_nbventedecide, F_taxe, F_classements ) VALUES(?, ?, ?, ?, ?, ?)");
-				prepare.setLong(1, id);
-				prepare.setString(2, obj.getMailContact());
-				prepare.setString(3, obj.getMdp());
-				prepare.setInt(4, obj.getNbVenteDecide());
-				prepare.setFloat(5, obj.getTaxe());
-				prepare.setFloat(6, obj.getClassements().getId());
-
+			PreparedStatement prepare = this.connect.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS);
+			
+			
+	
+				prepare.setString(1, obj.getMailContact());
+				prepare.setString(2, obj.getMdp());
+				prepare.setInt(3, obj.getNbVenteDecide());
+				prepare.setFloat(4, obj.getTaxe());
+				prepare.setLong(5, obj.getClassements().getId());
 				prepare.executeUpdate();
-				obj = this.find(id);
+				
+				ResultSet keyResultSet = prepare.getGeneratedKeys();
+		        long newF_id = 0;
+		        if (keyResultSet.next()) {
+		        	newF_id = (int) keyResultSet.getLong(1);
+		            
+		        }
 
-			}
+ 
+					
+				obj = this.find(newF_id);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -114,7 +119,7 @@ public class FournisseurDAO extends DAO<Fournisseur> {
 			ResultSet result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeQuery(
-					"SELECT * FROM fournissur WHERE F_id = " + id);
+					"SELECT * FROM Fournisseur WHERE F_id = " + id);
 			if (result.first())
 				try {
 					DAO<Classement> ClassementDAO = AbstractDAOFactory
@@ -125,7 +130,7 @@ public class FournisseurDAO extends DAO<Fournisseur> {
 							result.getInt("F_nbVenteDecide"),
 							result.getInt("F_taxe"),
 							ClassementDAO.find((long) (result
-									.getFloat("F_classements")))); // on cherche
+									.getLong("F_classements")))); // on cherche
 																	// le
 																	// Classement
 																	// dans la

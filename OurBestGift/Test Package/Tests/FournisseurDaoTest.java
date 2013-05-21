@@ -1,5 +1,7 @@
 package Tests;
 
+import static org.junit.Assert.*;
+
 import java.util.ArrayList;
 
 import org.junit.Test;
@@ -12,21 +14,33 @@ import DAO.FactoryType;
 
 public class FournisseurDaoTest {
 
+	
+	 @Test
+	   public void testFindById() {
+		 DAO<Fournisseur> fDAO = AbstractDAOFactory.getFactory(FactoryType.DAO_FACTORY).getFournisseurDAO();
+		 Fournisseur u = fDAO.find(2);
+	       assertEquals(2, u.getIdentifiant());//assertEquals qui consiste à comparer une valeur attendue (1er argument), à un résultat (2ème argument)
+	       //Si le résultat est égal à la valeur attendue, alors l'exécution se poursuit, sinon une exception est levée et la méthode de test est interrompue
+
+	       assertEquals("karimessouabni0@gmail.com", u.getMailContact());
+	       assertEquals("mypassword", u.getMdp());
+	    
+	   }
+	 
 	@Test
 
 	   public void testCreate() throws Exception {
-		ArrayList locationList = new ArrayList();
-		locationList.add("Nice");
-		locationList.add("Paris");
-		locationList.add("Lyon");
-		locationList.add("Cannes");
+		String myLocation = "Paris";
 		
-		Classement c = new Classement(12, "Location", locationList);
-		Fournisseur f = new Fournisseur(12, "mypassword", "karimessouabni0@gmail.com", 12, 30, c) ; 
+		Classement c = new Classement(10, "Location", myLocation );
+		Fournisseur f = new Fournisseur(10, "mypassword", "karimessouabni0@gmail.com", 1, 30, c) ; 
 		DAO<Fournisseur> fDAO = AbstractDAOFactory.getFactory(FactoryType.DAO_FACTORY).getFournisseurDAO();
 		fDAO.create(f);
-	    System.out.println("Terminé");
-
-		
+	    System.out.println("Termine");
+	
 	}
+	
+	
+	 
+	 
 }

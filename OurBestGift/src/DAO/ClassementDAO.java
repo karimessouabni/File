@@ -4,7 +4,9 @@ import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import Administration_des_Fournisseurs.Classement;
@@ -22,32 +24,27 @@ public class ClassementDAO extends DAO<Classement> {
 
 	public Classement create(Classement obj) {
 		try {
-
-			ResultSet result = this.connect.createStatement(
-					ResultSet.TYPE_SCROLL_INSENSITIVE,
-					ResultSet.CONCUR_UPDATABLE).executeQuery(
-					"SELECT NEXTVAL('Classement_id_seq') as id"); // faut créer
-																	// une
-																	// sequence
-																	// dans la
-																	// BD pour
-																	// avoir
-																	// l'id
-																	// suivant
-																	// avant
-																	// l'inserations
-			if (result.first()) {
-				long id = result.getLong("id");
+			
 				PreparedStatement prepare = this.connect
-						.prepareStatement("INSERT INTO Classement (Classement_id, Classement_nom) VALUES(?, ?)");
-				prepare.setLong(1, id);
-				prepare.setString(2, obj.getNom());
-				prepare.setArray(3, (Array) obj.getSousClassementList());
+						.prepareStatement("INSERT INTO Classement (C_id, C_nom, C_sousClassement) VALUES(null, ?, ?)",Statement.RETURN_GENERATED_KEYS);
+			
 
+				prepare.setString(1, obj.getNom());
+				prepare.setString(2, obj.getSousClassement());
 				prepare.executeUpdate();
-				obj = this.find(id);
+				ResultSet keyResultSet = prepare.getGeneratedKeys();
+		        long newC_id = 0;
+		        if (keyResultSet.next()) {
+		        	newC_id = (int) keyResultSet.getLong(1);
+		            
+		        }
 
-			}
+					
+				
+				
+			
+				obj = this.find(newC_id);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -89,11 +86,11 @@ public class ClassementDAO extends DAO<Classement> {
 			ResultSet result = this.connect.createStatement(
 					ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY).executeQuery(
-					"SELECT * FROM Classement WHERE A_id = " + id);
+					"SELECT * FROM Classement WHERE C_id = " + id);
 			if (result.first())
 				try {
 					f = new Classement(id, result.getString("C_nom"),
-							(ArrayList<String>) result
+							(String) result
 									.getObject("C_sousClassement"));
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
@@ -105,4 +102,6 @@ public class ClassementDAO extends DAO<Classement> {
 		return f;
 	}
 
+	
+	
 }
