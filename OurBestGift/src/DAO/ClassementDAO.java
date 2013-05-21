@@ -25,12 +25,13 @@ public class ClassementDAO extends DAO<Classement> {
 	public Classement create(Classement obj) {
 		try {
 			
+		
 				PreparedStatement prepare = this.connect
-						.prepareStatement("INSERT INTO Classement (C_id, C_nom, C_sousClassement) VALUES(null, ?, ?)",Statement.RETURN_GENERATED_KEYS);
+						.prepareStatement("INSERT INTO Classement (C_id, C_nom, C_sousClassement) VALUES(?, ?, ?)",Statement.RETURN_GENERATED_KEYS);
 			
-
-				prepare.setString(1, obj.getNom());
-				prepare.setString(2, obj.getSousClassement());
+				prepare.setLong(1, obj.getId());
+				prepare.setString(2, obj.getNom());
+				prepare.setString(3, obj.getSousClassement());
 				prepare.executeUpdate();
 				ResultSet keyResultSet = prepare.getGeneratedKeys();
 		        long newC_id = 0;

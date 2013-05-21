@@ -15,8 +15,8 @@ public class ClassementDaoTest {
 	 @Test
 	   public void testFindById() {
 		 DAO<Classement> fDAO = AbstractDAOFactory.getFactory(FactoryType.DAO_FACTORY).getClassementDAO();
-		 	Classement u = fDAO.find(3);
-	       assertEquals(3, u.getId());//assertEquals qui consiste à comparer une valeur attendue (1er argument), à un résultat (2ème argument)
+		 	Classement u = fDAO.find(5);
+	       assertEquals(5, u.getId());//assertEquals qui consiste à comparer une valeur attendue (1er argument), à un résultat (2ème argument)
 	       //Si le résultat est égal à la valeur attendue, alors l'exécution se poursuit, sinon une exception est levée et la méthode de test est interrompue
 
 	       assertEquals("Loisir", u.getNom());
