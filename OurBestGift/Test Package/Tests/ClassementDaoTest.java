@@ -9,6 +9,10 @@ import DAO.AbstractDAOFactory;
 import DAO.DAO;
 import DAO.FactoryType;
 
+/**
+ * @author karim
+ *
+ */
 public class ClassementDaoTest {
 
 	
