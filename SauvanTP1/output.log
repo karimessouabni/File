@@ -1,0 +1,40 @@
+mai 11, 2013 6:09:26 PM Exo5.DVD <init>
+INFO: DVD dvd1, Le seigneur des Anneaux (film) par Peter Jackson cree
+mai 11, 2013 6:09:26 PM Exo5.DVD <init>
+INFO: DVD dvd2, Les 2 tours (film) par Peter Jackson cree
+mai 11, 2013 6:09:26 PM Exo5.DVD <init>
+INFO: DVD dvd3, Le retour du Roi (film) par Peter Jackson cree
+mai 11, 2013 6:09:26 PM Exo5.Book <init>
+INFO: Livre book1, The Java Programming Language par Ken Arnold, James Gosling, David Holmes cree
+mai 11, 2013 6:09:26 PM Exo5.Book <init>
+INFO: Livre book2, Head First Java par Kathy Sierra, Bert Bates cree
+mai 11, 2013 6:09:26 PM Exo5.Book <init>
+INFO: Livre book3, The elements of Java style par Scott Ambler, Alan Vermeulen cree
+mai 11, 2013 6:09:26 PM Exo5.Book <init>
+INFO: Livre book4, Bitter Java par Bruce Tate cree
+mai 11, 2013 6:09:26 PM Exo5.Lot <init>
+INFO: Lot de 10 Livre book3, The elements of Java style par Scott Ambler, Alan Vermeulen cree
+mai 11, 2013 6:09:26 PM Exo5.Lot <init>
+INFO: Lot de 20 Livre book4, Bitter Java par Bruce Tate cree
+mai 11, 2013 6:09:26 PM Exo5.Stocks getInstance
+INFO: Nouvelle instance de Stocks cree
+mai 11, 2013 6:09:26 PM Exo5.Stocks decreaseStock
+WARNING: Reference produit inconnue lot2
+mai 11, 2013 6:09:26 PM Exo5.Invoice <init>
+INFO: La facture numero 1 en date du 11/05/2013 pour le client Bastien Sauvan a ete cree
+mai 11, 2013 6:09:26 PM Exo5.Invoice addOrder
+INFO: Une commande a ete ajoute a la facture numero 1
+mai 11, 2013 6:09:26 PM Exo5.Invoice addOrder
+INFO: Une commande a ete ajoute a la facture numero 1
+mai 11, 2013 6:09:26 PM Exo5.Invoice addOrder
+INFO: Une commande a ete ajoute a la facture numero 1
+mai 11, 2013 6:09:26 PM Exo5.Invoice addOrder
+INFO: Une commande a ete ajoute a la facture numero 1
+mai 11, 2013 6:09:26 PM Exo5.Invoice addOrder
+INFO: Une commande a ete ajoute a la facture numero 1
+mai 11, 2013 6:09:26 PM Exo5.Invoice addOrder
+INFO: Une commande a ete ajoute a la facture numero 1
+mai 11, 2013 6:09:26 PM Exo5.Invoice addOrder
+INFO: Une commande a ete ajoute a la facture numero 1
+mai 11, 2013 6:09:26 PM Exo5.Example main
+SEVERE: Numero de commande invalide
