@@ -13,11 +13,65 @@
     
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>User Registration</title>
+      <iframe src="https://www.facebook.com/plugins/like.php?href=YOUR_URL"
+        scrolling="no" frameborder="0"
+        style="border:none; width:450px; height:80px"></iframe>
     
     
+    	<div id="fb-root"></div>
+      <script>
+        // Load the SDK Asynchronously
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+      </script>
+
+      <div class="fb-like"></div>
+      
+      
+      <div id="fb-root"></div>
+      <script>
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '133703806822961', // App ID
+            channelUrl : 'http://localhost:8080/LETP_SGBD2/Acceuil.jsp', // Channel File
+            status     : true, // check login status
+            cookie     : true, // enable cookies to allow the server to access the session
+            xfbml      : true  // parse XFBML
+          });
+          FB.api('/me', function(user) {
+            if (user) {
+              var image = document.getElementById('image');
+              image.src = 'https://graph.facebook.com/' + user.id + '/picture';
+              var name = document.getElementById('name');
+              name.innerHTML = user.name
+            }
+          });
+        };
+        // Load the SDK Asynchronously
+        (function(d, s, id){
+           var js, fjs = d.getElementsByTagName(s)[0];
+           if (d.getElementById(id)) {return;}
+           js = d.createElement(s); js.id = id;
+           js.src = "//connect.facebook.net/en_US/all.js";
+           fjs.parentNode.insertBefore(js, fjs);
+         }(document, 'script', 'facebook-jssdk'));
+      </script>
+
+      <div align="center">
+        <img id="image"/>
+        <div id="name"></div>
+      </div>
+      
         <h1>User Registration</h1>
 
-        <form id="RegisterUserForm" action="Registration?function=getRegistration" method="post">
+<!--         <form id="RegisterUserForm" action="Registration?function=getRegistration" method="post"> -->
+        <form id="RegisterUserForm" action="Registration" method="post">
+
             <label for="name">Name*:</label><br>
             <input id="name" name="name" type="text"><br><br>
             <label for="familyname">Family Name*:</label><br>

@@ -1,5 +1,11 @@
+package Beans;
 import java.io.Serializable;
 
+/**
+ * @author Karim
+ * Cette Classe permetera de recuperer les donner de l'utilisateur dans l'application
+ *
+ */
 public class User implements Serializable {
  
     private String nom;
@@ -7,6 +13,7 @@ public class User implements Serializable {
     private int age;
     private int id ;
     private String  mp ;
+    // NB : Il n'ya pas un attribut confirmation de mp car on le stock pas dans notre Bean  
  
     public User() {
         nom = "";
