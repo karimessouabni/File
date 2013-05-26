@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from SendMailBeanService WSDL service -->
+
+  <service name="SendMailBean" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://Administration_des_Fournisseurs"/>
+      <parameter name="wsdlServiceElement" value="SendMailBeanService"/>
+      <parameter name="schemaQualified" value="http://Administration_des_Fournisseurs"/>
+      <parameter name="wsdlServicePort" value="SendMailBean"/>
+      <parameter name="className" value="Administration_des_Fournisseurs.SendMailBean"/>
+      <parameter name="wsdlPortType" value="SendMailBean"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://Administration_des_Fournisseurs" name="emailPassword" qname="operNS:emailPassword" soapAction="">
+        <parameter xmlns:pns="http://Administration_des_Fournisseurs" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:in0" type="tns:string"/>
+        <parameter xmlns:pns="http://Administration_des_Fournisseurs" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:in1" type="tns:string"/>
+        <parameter xmlns:pns="http://Administration_des_Fournisseurs" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:in2" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://Administration_des_Fournisseurs" xmlns:retNS="http://Administration_des_Fournisseurs" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getPasswordAndEmailAddress" qname="operNS:getPasswordAndEmailAddress" returnQName="retNS:getPasswordAndEmailAddressReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="emailPassword getPasswordAndEmailAddress"/>
+
+  </service>
+</deployment>

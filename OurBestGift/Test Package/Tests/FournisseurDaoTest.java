@@ -17,9 +17,7 @@ import DAO.FactoryType;
  *
  */
 public class FournisseurDaoTest {
-
 	
-
 	 @Test
 	   public void testFindById() {
 		 DAO<Fournisseur> fDAO = AbstractDAOFactory.getFactory(FactoryType.DAO_FACTORY).getFournisseurDAO();

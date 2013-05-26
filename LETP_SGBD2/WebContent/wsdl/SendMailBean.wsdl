@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://Administration_des_Fournisseurs" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://Administration_des_Fournisseurs" xmlns:intf="http://Administration_des_Fournisseurs" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://Administration_des_Fournisseurs" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="emailPassword">
+    <complexType>
+     <sequence>
+      <element name="in0" type="xsd:string"/>
+      <element name="in1" type="xsd:string"/>
+      <element name="in2" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="emailPasswordResponse">
+    <complexType/>
+   </element>
+   <element name="getPasswordAndEmailAddress">
+    <complexType/>
+   </element>
+   <element name="getPasswordAndEmailAddressResponse">
+    <complexType>
+     <sequence>
+      <element name="getPasswordAndEmailAddressReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="emailPasswordRequest">
+
+      <wsdl:part element="impl:emailPassword" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPasswordAndEmailAddressRequest">
+
+      <wsdl:part element="impl:getPasswordAndEmailAddress" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="emailPasswordResponse">
+
+      <wsdl:part element="impl:emailPasswordResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getPasswordAndEmailAddressResponse">
+
+      <wsdl:part element="impl:getPasswordAndEmailAddressResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="SendMailBean">
+
+      <wsdl:operation name="emailPassword">
+
+         <wsdl:input message="impl:emailPasswordRequest" name="emailPasswordRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:emailPasswordResponse" name="emailPasswordResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPasswordAndEmailAddress">
+
+         <wsdl:input message="impl:getPasswordAndEmailAddressRequest" name="getPasswordAndEmailAddressRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getPasswordAndEmailAddressResponse" name="getPasswordAndEmailAddressResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="SendMailBeanSoapBinding" type="impl:SendMailBean">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="emailPassword">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="emailPasswordRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="emailPasswordResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getPasswordAndEmailAddress">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getPasswordAndEmailAddressRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getPasswordAndEmailAddressResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="SendMailBeanService">
+
+      <wsdl:port binding="impl:SendMailBeanSoapBinding" name="SendMailBean">
+
+         <wsdlsoap:address location="http://localhost:8080/LETP_SGBD2/services/SendMailBean"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
